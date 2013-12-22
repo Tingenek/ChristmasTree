@@ -1,8 +1,8 @@
 /*
 //Christmas Tree with @cheerlights
-//Tingenek@gmail.com
-//Backgroud courtesy of http://www.zastavki.com/eng/Drawn_wallpapers/wallpaper-17315-29.htm
-*/
+ //Tingenek@gmail.com
+ //Backgroud courtesy of http://www.zastavki.com/eng/Drawn_wallpapers/wallpaper-17315-29.htm
+ */
 
 PImage bg;
 String[] s;
@@ -16,18 +16,18 @@ void setup() {
   bg = loadImage("snowtree.jpg");
   //lowe framerate so snow works
   frameRate(2);
-  //colours
-  hm.put("red", color(220,20,60));
-  hm.put("green",color(0,128,0));
-  hm.put("blue",color(72,118,255));
-  hm.put("cyan",color(0,139,139));
-  hm.put("white",color(255,255,255));
-  hm.put("warmwhite",color(255,255,255));
-  hm.put("purple",color(128,0,128));
-  hm.put("magenta",color(238,0,23));
-  hm.put("yellow",color(255,255,0));
-  hm.put("orange",color(238,154,0));
-  hm.put("pink",color(255,20,147));
+  //colours  
+  hm.put("red", color(#FF0000));
+  hm.put("green", color(#008000));
+  hm.put("blue", color(#0000FF));
+  hm.put("cyan", color(#00FFFF));
+  hm.put("white", color(#FFFFFF));
+  hm.put("warmwhite", color(#FDF5E6));
+  hm.put("purple", color(#800080));
+  hm.put("magenta", color(#FF00FF));
+  hm.put("yellow", color(#FFFF00));
+  hm.put("orange", color(#FFA500));
+  hm.put("pink", color(#ffc0cb));
   time = millis(); //store the current time
   smooth();
   //get current colour
@@ -37,11 +37,11 @@ void setup() {
 void draw() {
   background(bg);
   checktime(wait);
-   // Lights
-  color c1 = color(220,20,60);
+  // Lights
+  color c1 = color(220, 20, 60);
 
   if (s[0] !="") {
-   c1 = (Integer) hm.get(s[0]);
+    c1 = (Integer) hm.get(s[0]);
   } 
 
   fill(c1 );
@@ -50,19 +50,19 @@ void draw() {
 } 
 
 void drawBaubles() {
- //draw baubles down the tree 
- stroke(255); 
- ellipse(298,140,10, 10);
- ellipse(270,174,10, 10);
- ellipse(348,177,10, 10);
- ellipse(364,223,10, 10);
- ellipse(257,219,10, 10);
- ellipse(260,273,10, 10);
- ellipse(335,236,10, 10);
- ellipse(379,267,10, 10);
- ellipse(374,315,10, 10);
- ellipse(282,323,10, 10);
- ellipse(230,324,10, 10);
+  //draw baubles down the tree 
+  stroke(255); 
+  ellipse(298, 140, 10, 10);
+  ellipse(270, 174, 10, 10);
+  ellipse(348, 177, 10, 10);
+  ellipse(364, 223, 10, 10);
+  ellipse(257, 219, 10, 10);
+  ellipse(260, 273, 10, 10);
+  ellipse(335, 236, 10, 10);
+  ellipse(379, 267, 10, 10);
+  ellipse(374, 315, 10, 10);
+  ellipse(282, 323, 10, 10);
+  ellipse(230, 324, 10, 10);
 }
 
 void drawSnow() {
@@ -76,19 +76,21 @@ void drawSnow() {
       point(random(i*60, (i+1)*60), random(height));
     }
   }
-   strokeWeight(1);
+  strokeWeight(1);
 }
 
 void checktime(int wait) {
   //Check is time is up. If so get new colour
-  if(millis() - time >= wait) {
+  if (millis() - time >= wait) {
     try {
-    s=loadStrings("http://api.thingspeak.com/channels/1417/field/1/last.txt");
+      s=loadStrings("http://api.thingspeak.com/channels/1417/field/1/last.txt");
 
-    println(s[0]);
-  } catch (Exception e) {
-    println(e);
-  }
-  time = millis();
+      println(s[0]);
+    } 
+    catch (Exception e) {
+      println(e);
+    }
+    time = millis();
   }
 }
+
